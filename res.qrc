@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/examples">
+        <file>res/bitmap_image.png</file>
+        <file>res/gradient.jpg</file>
+        <file>res/transparent.png</file>
+        <file>res/noImage.jpg</file>
+        <file>res/transparentBtn.png</file>
+        <file>res/open.png</file>
+        <file>res/open2.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file alias="/qml/root.qml">res/qml/root.qml</file>
+        <file alias="/qml/BgSelectorBtn.qml">res/qml/BgSelectorBtn.qml</file>
+    </qresource>
+</RCC>
