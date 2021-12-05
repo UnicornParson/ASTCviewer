@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/examples">
+    <qresource prefix="/img">
         <file>res/bitmap_image.png</file>
         <file>res/gradient.jpg</file>
         <file>res/transparent.png</file>
@@ -7,6 +7,7 @@
         <file>res/transparentBtn.png</file>
         <file>res/open.png</file>
         <file>res/open2.png</file>
+        <file>res/clicktoopen.png</file>
     </qresource>
     <qresource prefix="/">
         <file alias="/qml/root.qml">res/qml/root.qml</file>

@@ -23,7 +23,7 @@ Button {
             anchors.fill: parent
             id: transparentIcon
 
-            source: "qrc:/examples/res/transparentBtn.png"
+            source: "qrc:/img/res/transparentBtn.png"
 
         }
     }

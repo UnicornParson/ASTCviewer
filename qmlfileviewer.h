@@ -6,7 +6,7 @@
 #include <QQuickImageProvider>
 #include <QSGTextureProvider>
 #include "fileviewersource.h"
-
+#include <QQmlError>
 class CustomImageProvider : public QQuickImageProvider
 {
 public:
@@ -21,8 +21,10 @@ public:
     explicit QmlFileViewer(QWidget *parent = nullptr) noexcept;
     bool loadFile(const QString& path);
     void exec();
+
 private slots:
     void onFileDialogRequested();
+    void onQmlWarnings(const QList<QQmlError> &warnings);
 
 private:
     void keyReleaseEvent(QKeyEvent *e) Q_DECL_OVERRIDE;

@@ -35,7 +35,7 @@ Item
         Image {
             id: bgImage
             source: (!!internal.source && internal.source.backgroundType === BGType.BGType_transparent) ?
-                        "qrc:/examples/res/transparent.png" : "qrc:/examples/res/gradient.jpg"
+                        "qrc:/img/res/transparent.png" : "qrc:/img/res/gradient.jpg"
             anchors.fill: parent
             visible: !!internal.source && internal.source.backgroundTypeImage
         }
@@ -96,7 +96,7 @@ Item
 
     Image {
         id: contentImage
-        source: (!!internal.source && internal.source.currentPath !== "") ? ("file:///" + internal.source.currentPath) : "qrc:/examples/res/noImage.jpg"
+        source: (!!internal.source && internal.source.currentPath !== "") ? ("file:///" + internal.source.currentPath) : "qrc:/img/res/clicktoopen.png"
         visible: !!internal.source
         anchors {
             horizontalCenter: root.horizontalCenter
@@ -148,13 +148,13 @@ Item
             {
                 id: burgerBtnImg
                 anchors.fill: parent
-                source: "qrc:/examples/res/open.png"
+                source: "qrc:/img/res/open.png"
             }
 
             width: 16
             height: 16
-            onEntered: {burgerBtnImg.source = "qrc:/examples/res/open2.png"}
-            onExited: {burgerBtnImg.source = "qrc:/examples/res/open.png"}
+            onEntered: {burgerBtnImg.source = "qrc:/img/res/open2.png"}
+            onExited: {burgerBtnImg.source = "qrc:/img/res/open.png"}
             onReleased: {fvsource.fileDialogRequested()}
         }
 

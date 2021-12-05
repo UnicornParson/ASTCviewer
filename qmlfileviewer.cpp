@@ -20,8 +20,8 @@ QmlFileViewer::QmlFileViewer(QWidget *parent) noexcept:
     FileViewerSourceBGType::RegisterTypes();
     //QQmlContext* ctx = rootContext();
     QQmlEngine *e = engine();
+
     e->rootContext()->setContextProperty("fvsource", m_source);
-    e->rootContext()->setContextProperty("tttt", QVariant(42));
     e->addImageProvider("", &m_imgProvider);
     setResizeMode(QQuickWidget::SizeRootObjectToView);
     setMinimumWidth(800);
@@ -31,6 +31,15 @@ QmlFileViewer::QmlFileViewer(QWidget *parent) noexcept:
         setWindowTitle(s);
     });
     connect(m_source, &FileViewerSource::fileDialogRequested, this, &QmlFileViewer::onFileDialogRequested);
+    connect(e, &QQmlEngine::warnings, this, &QmlFileViewer::onQmlWarnings);
+}
+
+void QmlFileViewer::onQmlWarnings(const QList<QQmlError> &warnings)
+{
+    for(const QQmlError& e: warnings)
+    {
+        qWarning() << "QML WARNING in " << e.url() << "." <<e.line() << "." << e.column() << e.toString();
+    }
 }
 
 void QmlFileViewer::onFileDialogRequested()

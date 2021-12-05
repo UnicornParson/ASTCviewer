@@ -1,7 +1,10 @@
+#include <iostream>
+
 #include <QDebug>
 #include <QApplication>
 #include <QFile>
 #include <QDir>
+
 #include "viewerwidget.h"
 #include "qmlfileviewer.h"
 
@@ -15,11 +18,15 @@ bool isFolder(const QString& path) noexcept
     return QDir(path).exists();
 }
 
+void logMessageNative(const QString& msg) noexcept
+{
+    std::cerr << msg.toStdString() << std::endl << std::flush;
+}
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-
-    QString initial = ""; //":/examples/res/exampleJPG.jpg";
+    QString initial = "";
     if(a.arguments().size() > 1)
     {
         QString s = a.arguments().at(1).trimmed();
@@ -28,12 +35,19 @@ int main(int argc, char *argv[])
             initial = s;
         }
     }
-    qDebug() << initial;
+    if(!initial.isEmpty())
+    {
+        qDebug() << initial;
+    }
+    else
+    {
+        qDebug() << "no initial image";
+    }
+    logMessageNative("point2");
     QmlFileViewer* fileWidget = new QmlFileViewer();
     if(isFile(initial))
     {
         fileWidget->loadFile(initial);
-
     }
     fileWidget->exec();
     return a.exec();
